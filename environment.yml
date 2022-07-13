@@ -1,0 +1,8 @@
+name: ltf-analysis
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - pip
+  - pip:
+    - fastapi[all]
