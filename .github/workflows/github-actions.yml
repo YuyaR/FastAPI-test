@@ -8,8 +8,7 @@ on:
   pull_request:
 
 jobs:
-
-    name: Checkout Github Repo
+  check-out:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
