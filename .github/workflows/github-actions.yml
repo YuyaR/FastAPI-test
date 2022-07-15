@@ -20,8 +20,11 @@ jobs:
           cache: 'pip'
       - name: Install dependencies
         run: pip install -r requirements.txt
-
-
+  build:
+    runs-on: docker
+    steps:
+      - name: Build image
+        run: docker build -t item-api:test .
       # - name: Build env
       #   run:
       #     command: pip install -r requirements.txt
