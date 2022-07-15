@@ -23,7 +23,6 @@ class ItemOut(BaseModel):
 
 class ItemDel(BaseModel):
 	item_id: int
-	# message: str = None
 
 items_list = [
 	{"item_id": 1, "name": "Foo", "description": 'generic item', "price": 5, "tax": 1},
