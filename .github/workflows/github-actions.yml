@@ -8,7 +8,7 @@ on:
   pull_request:
 
 jobs:
-  build-and-run:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       -
@@ -30,10 +30,13 @@ jobs:
         run: DOCKER_BUILDKIT=0  docker build -t simple-warehouse .
       -
         name: Run container
-        run: docker container run --rm simple-warehouse
+        run: |
+          docker container run --rm simple-warehouse &&
+          curl http://localhost:8000/
+          
 
   login-and-push:
-    needs: build-and-run
+    needs: build-and-test
     runs-on: ubuntu-latest
     steps:
       -
