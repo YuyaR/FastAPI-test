@@ -22,6 +22,7 @@ jobs:
         run: pip install -r requirements.txt
   
   build:
+    needs: check-out
     runs-on: ubuntu-latest
     steps:
       - name: Set up Docker Buildx
@@ -41,11 +42,15 @@ jobs:
           password: ${{ secrets.GHCR_PAT }}
 
       - name: Build image
-        run: DOCKER_BUILDKIT=0  docker build ./Dockerfile
-        # uses: docker/build-push-action@v3
-        # with:
-        #   context: .
-        #   push: true
-        #   tags: ${{ secrets.DOCKERHUB_USERNAME }}/simple_warehouse:latest
+        run: DOCKER_BUILDKIT=0  docker build -t simple-warehouse ../Dockerfile
+      - name: Test run container
+        run: docker container run --rm simple-warehouse
+  Push:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Push to Docker
+      - run: |
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/simple-warehouse:latest
 
     
