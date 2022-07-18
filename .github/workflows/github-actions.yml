@@ -37,8 +37,9 @@ jobs:
           password: ${{ secrets.GHCR_PAT }}
 
       - name: Build image
-        uses: docker/build-push-action@v3
-        with:
-          context: .
+        run: DOCKER_BUILDKIT=0  docker build .
+        # uses: docker/build-push-action@v3
+        # with:
+        #   context: .
 
     
