@@ -18,7 +18,7 @@ class Item(ItemBase):
     class Config:
         orm_mode=True
 
-class ItemRecall(ItemBase):
+class ItemRecall(BaseModel):
 	message: str
 	item_info: Union[List[Item], Item]
 
