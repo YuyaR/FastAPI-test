@@ -32,8 +32,8 @@ jobs:
         name: Run container
         run: |
           docker network create warehouse-net
-          docker container run -d --rm --network warehouse-net -p 8000:8000 simple-warehouse
-          docker run --rm --network warehouse-net curlimages/curl:latest http://simple-warehouse:8000/
+          docker container run -d --rm --network warehouse-net --name warehouse -p 8000:8000 simple-warehouse
+          docker run --rm --network warehouse-net curlimages/curl:latest http://warehouse:8000/
 
   login-and-push:
     needs: build-and-test
