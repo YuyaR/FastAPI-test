@@ -4,7 +4,6 @@ from typing import Union, List
 from .database import engine, SessionLocal
 from . import crud, models, schema
 
-from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, Body, HTTPException
 from sqlalchemy.orm import Session
 
