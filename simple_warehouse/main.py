@@ -8,7 +8,6 @@ from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, Body, HTTPException
 from sqlalchemy.orm import Session
 
-load_dotenv()
 
 models.Base.metadata.create_all(bind=engine)
 
